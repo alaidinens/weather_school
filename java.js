@@ -43,4 +43,4 @@ weatherUpdate = (city) => {
   };
 };
 
-weatherUpdate("patna");
+weatherUpdate("Riga");
