@@ -1,0 +1,45 @@
+body {
+    align-content: center;
+    align-items: center;
+    padding: 5em 5em 5em 5em;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.heading {
+    align-content: flex;
+    align-items: center;
+    position: absolute;
+}
+
+.laiks {
+    position: absolute;
+    align-content: center;
+    align-items: center;
+}
+
+.find {
+    position: relative;
+    color: #000000;
+    display: flex;
+    font-family: Inter, 'Source Sans Pro';
+    font-size: 1.5rem;
+    font-weight: 400;    
+    max-width: 40rem;
+    text-align: center;
+    line-height: 1.2125;
+    margin: 0rem 14.5rem 0rem 32rem;
+    width: calc(100% - 44.9rem);
+    margin-left: 60px;
+
+}
+
+.meklet {
+    background-color: #79cf3d;
+    padding: 6px 10px 6px 10px;
+    color: #000000;
+    border-radius: 2.5rem;
+    position: relative;
+
+}
