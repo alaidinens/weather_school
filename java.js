@@ -27,11 +27,7 @@ weatherUpdate = (city) => {
   const xhr = new XMLHttpRequest();
   xhr.open(
     "GET",
-    `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=cad7ec124945dcfff04e457e76760d90`);
-  // in place of appid enter your open weather API Key
-  // You can create it for free
-  // https://home.openweathermap.org/users/sign_up
-
+    `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=c774716a7b3ab97e1151d8304e6b0bf9`);
   xhr.send();
   xhr.onload = () => {
     if (xhr.status === 404) {
