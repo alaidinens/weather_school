@@ -10,12 +10,10 @@ setInterval(myDateFunction, 1000);
 
 const input = document.querySelector("#input");
 const city = document.querySelector("#city");
-
 const cityName = document.querySelector("#cityName");
 const Temp = document.querySelector("#temp");
 const main = document.querySelector("#main");
 const discription = document.querySelector("#discription");
-const image = document.querySelector("#image");
 
 input.onsubmit = (e) => {
   e.preventDefault();
@@ -25,9 +23,7 @@ input.onsubmit = (e) => {
 
 weatherUpdate = (city) => {
   const xhr = new XMLHttpRequest();
-  xhr.open(
-    "GET",
-    `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=c774716a7b3ab97e1151d8304e6b0bf9`);
+  xhr.open("GET",`https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid=c774716a7b3ab97e1151d8304e6b0bf9&units=metric`);
   xhr.send();
   xhr.onload = () => {
     if (xhr.status === 404) {
@@ -38,9 +34,8 @@ weatherUpdate = (city) => {
       Temp.innerHTML = `${Math.round(data.main.temp - 273.15)}°C`;
       main.innerHTML = data.weather[0].main;
       discription.innerHTML = data.weather[0].description;
-      image.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
     }
   };
 };
 
-weatherUpdate("Riga");
+weatherUpdate(city);
