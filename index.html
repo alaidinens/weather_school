@@ -1,41 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>keys</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>keys</title>
 
-    <!-- custom css file link  -->
-    <link rel="stylesheet" href="style.css">
+        <!-- custom css file link  -->
+        <link rel="stylesheet" href="style.css">
 
-</head>
-<body>
-    <header class = "header">
+    </head>
+    <body>
+        <div class="main">
+            <header class = "header">
+            </header>
+            <section class = "sveiciens" id = 'sveiciens'>
+                <h2 class = "heading">
+                    <span>Laipni lūgti<br>programma, kura rada tiešo laiku un tagadējus laikapsatkļus</span>
+                </h2><br><br><br><br>
 
-    </header>
-    <section class = "sveiciens" id = 'sveiciens'>
-        <h2 class = "heading">
-            <span>Laipni lūgti<br>programma, kura rada tiešo laiku un tagadējus laikapsatkļus</span>
-        </h2><br><br><br><br>
+                <h3 class="Laiks">Tagadejais Laiks: <br/><span id="time"> </span></h3>
+                <script src="java.js" class="tagad"> </script>
+                <br/>
 
-        <h3 class="Laiks">Tagadejais Laiks: <br/><span id="time"> </span></h3>
-        <script src="java.js" class="tagad"> </script>
-        <br/>
-
-        <div class="container">
-            <form id="input">
-                <input type="submit" id="city" placeholder="Enter City Name"><br>    
-                <input type="submit" value="Update">
-            </form>
-            <div id="weatherContainer">
-                <span id="cityName">Patna</span>
-                <span id="temp">33°C</span>
-                <span id="main"></span>
-                <span id="discription"></span>
-            </div>
+                <div class="container">
+                    <form id="input">
+                        <input type="text" id="city" placeholder="Enter City Name"><br>    
+                        <input type="submit" value="Find">
+                    </form>
+                    <div id="result"></div>
+                </div>
+            </section>
         </div>
-    </section>
-
-</body>
+        <script src="java.js"></script>
+    </body>
 </html>

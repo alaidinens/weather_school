@@ -8,39 +8,21 @@ function myDateFunction() {
 setInterval(myDateFunction, 1000);
 
 
-const input = document.querySelector("#input");
-const city = document.querySelector("#city");
+const form = document.querySelector("#form");
+const city = document.querySelector("#result");
+const link = "https://api.openweathermap.org/data/2.5/weather?appid={}&units=metric";
+const api="c774716a7b3ab97e1151d8304e6b0bf9";
 
-const cityName = document.querySelector("#cityName");
-const Temp = document.querySelector("#temp");
-const main = document.querySelector("#main");
-const discription = document.querySelector("#discription");
-const image = document.querySelector("#image");
-
-input.onsubmit = (e) => {
-  e.preventDefault();
-  weatherUpdate(city.value);
-  city.value = "";
-};
-
-weatherUpdate = (city) => {
-  const xhr = new XMLHttpRequest();
-  xhr.open(
-    "GET",
-    `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=c774716a7b3ab97e1151d8304e6b0bf9`);
-  xhr.send();
-  xhr.onload = () => {
-    if (xhr.status === 404) {
-      alert("Place not found");
-    } else {
-      var data = JSON.parse(xhr.response);
-      cityName.innerHTML = data.name;
-      Temp.innerHTML = `${Math.round(data.main.temp - 273.15)}°C`;
-      main.innerHTML = data.weather[0].main;
-      discription.innerHTML = data.weather[0].description;
-      image.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
-    }
-  };
-};
-
-weatherUpdate("Riga");
+form.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const cityName = document.querySelector("#city").value;
+  const response = await fetch(Url + "&appid=" + apiKey + "&q=" + cityName);
+  const data = await response.json();
+  if (response.status === 200) {
+    const weatherDescription = data.weather[0].description;
+    const temperature = data.main.temp;
+    result.innerHTML = `Temperature in ${cityName}: ${temperature} Celsius<br>Weather description: ${weatherDescription}`;
+  } else {
+    result.innerHTML = "Not found";
+  }
+});
