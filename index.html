@@ -4,34 +4,25 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>keys</title>
+        <title>api</title>
 
         <!-- custom css file link  -->
         <link rel="stylesheet" href="style.css">
 
     </head>
     <body>
-        <div class="main">
-            <header class = "header">
-            </header>
-            <section class = "sveiciens" id = 'sveiciens'>
-                <h2 class = "heading">
-                    <span>Laipni lūgti<br>programma, kura rada tiešo laiku un tagadējus laikapsatkļus</span>
-                </h2><br><br><br><br>
-
-                <h3 class="Laiks">Tagadejais Laiks: <br/><span id="time"> </span></h3>
-                <script src="java.js" class="tagad"> </script>
-                <br/>
-
-                <div class="container">
-                    <form>
-                        <input type="text" id="city" placeholder="Enter City/Town"><br>    
-                        <button onclick={search}>Search</button>
-                    </form>
-                    <div id="result"></div>
-                </div>
-            </section>
+        <div class="input">
+            <input type="text" id="city" placeholder="Enter City/Town"><br>    
+            <input type="submit" value="Submit" class="submit">
         </div>
-        
+        <div class="container">
+            <div class="card">
+              <h1 class="name" id="name"></h1>
+              <p class="temp"></p>
+              <p class="clouds"></p>
+              <p class="desc"></p>
+            </div>
+        </div>
+    <script src="java.js"></script>    
     </body>
 </html>
