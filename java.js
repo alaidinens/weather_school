@@ -1,28 +1,49 @@
-const dateDiv = document.getElementById("time");
 
-function myDateFunction() {
-  const now = new Date();
-  const nowStr = now.toLocaleString('lv-EU');
-  dateDiv.innerHTML = nowStr;
+import "./App.css";
+import { useState } from "react";
+
+const api = {
+  key: "c774716a7b3ab97e1151d8304e6b0bf9",
+  base: "https://api.openweathermap.org/data/2.5/",
+};
+
+function App() {
+  const [search, setSearch] = useState("");
+  const [weather, setWeather] = useState({});
+
+  const searchPress = () => {
+    fetch(`${api.base}weather?q=${search}&units=metric&APPID=${api.key}`)
+      .then((res) => res.json())
+      .then((result) => {
+        setWeather(result);
+      });
+  };
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <h1>Weather App</h1>
+        <div>
+          <input
+            type="text"
+            placeholder="Enter city/town..."
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          <button onClick={searchPress}>Search</button>
+        </div>
+        {typeof weather.main !== "undefined" ? (
+          <div>
+            <p>{weather.name}</p>
+            <p>{weather.main.temp}°C</p>
+            <p>{weather.weather[0].main}</p>
+            <p>({weather.weather[0].description})</p>
+          </div>
+        ) : (
+          ""
+        )}
+      </header>
+    </div>
+  );
 }
-setInterval(myDateFunction, 1000);
 
-
-const form = document.querySelector("#form");
-const city = document.querySelector("#result");
-const link = "https://api.openweathermap.org/data/2.5/weather?appid={}&units=metric";
-const api="c774716a7b3ab97e1151d8304e6b0bf9";
-
-form.addEventListener("submit", async (event) => {
-  event.preventDefault();
-  const cityName = document.querySelector("#city").value;
-  const response = await fetch(Url + "&appid=" + apiKey + "&q=" + cityName);
-  const data = await response.json();
-  if (response.status === 200) {
-    const weatherDescription = data.weather[0].description;
-    const temperature = data.main.temp;
-    result.innerHTML = `Temperature in ${cityName}: ${temperature} Celsius<br>Weather description: ${weatherDescription}`;
-  } else {
-    result.innerHTML = "Not found";
-  }
-});
+export default App;
